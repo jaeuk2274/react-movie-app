@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react';
 import React from 'react';
+import Movie from '../components/Movie';
 
 class Detail extends React.Component{
 
@@ -14,12 +15,22 @@ class Detail extends React.Component{
     render() {
         const {location} = this.props;
         if(location.state){
-            return <span> {location.state.title}</span>
+            const {id, poster, title, year, genres, summary} = location.state;
+            return (
+                <Movie
+                    key={id}
+                    id={id}
+                    year={year}
+                    title={title}
+                    summary={summary}
+                    poster={poster}
+                    genres={genres}
+                />
+            )
         } else{
             return null;
         }
     }
-    
 }
 
 export default Detail;
